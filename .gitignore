@@ -1,0 +1,69 @@
+# Terraform State files
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Terraform crash log
+crash.log
+
+# Terraform configuration override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform plan files
+*.tfplan
+
+# Terraform lock file
+.terraform.lock.hcl
+
+# Directories for Terraform
+.terraform/
+
+# Kubernetes resource files
+*.kubeconfig
+.kube/
+kubeconfig
+
+# Kubernetes secrets
+*secrets.yml
+*secrets.yaml
+
+# YAML files for Kubernetes configurations (if you want to exclude certain sensitive files)
+*.yml
+*.yaml
+
+# Sensitive files (SSH keys, environment variables)
+*.pem
+*.key
+*.env
+
+# Log files
+*.log
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS files
+.DS_Store
+._*
+
+# Windows files
+Thumbs.db
+Desktop.ini
+
+# Node.js files (if using Node.js for some scripts)
+node_modules/
+
+# Python virtual environment (if using Python for some scripts)
+venv/
+__pycache__/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
