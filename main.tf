@@ -14,23 +14,23 @@ module "networks" {
   source      = "./modules/networks"
   project_id     = var.project_id
   region      = var.region
-  vpc_network = var.vpc_network
+  vpc_network_name = var.vpc_network_name
   notification_email = var.notification_email
 }
 
-module "kube-apps" {
-  source      = "./modules/kube-apps"
-  project_id     = var.project_id
-  region      = var.region
-  vpc_network = module.networks.my_cloud_ntwrk
-  kube_apps  = module.networks.kube_apps
-  notification_email = var.notification_email
-  gke_service_account = module.app-sa
-}
+# module "kube-apps" {
+#   source      = "./modules/kube-apps"
+#   project_id     = var.project_id
+#   region      = var.region
+#   vpc_network = module.networks.my_cloud_ntwrk
+#   kube_apps  = module.networks.kube_apps
+#   notification_email = var.notification_email
+#   gke_service_account = module.app-sa
+# }
 
-module "app-sa" {
-  source      = "./modules/app-sa"
-  project_id     = var.project_id
-  region      = var.region
-  vpc_network = module.networks.my_cloud_ntwrk
-}
+# module "app-sa" {
+#   source      = "./modules/app-sa"
+#   project_id     = var.project_id
+#   region      = var.region
+#   vpc_network = module.networks.my_cloud_ntwrk
+# }

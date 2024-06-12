@@ -11,7 +11,7 @@
 
 resource "google_compute_network" "my_cloud_ntwrk" {
   project                 = var.project_id
-  name                    = var.vpc_network
+  name                    = var.vpc_network_name
   auto_create_subnetworks = false
 }
 

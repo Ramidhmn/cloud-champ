@@ -10,6 +10,6 @@ variable "region" {
 
 variable "zone" {}
 
-variable "vpc_network" {}
+variable "vpc_network_name" {}
 
 variable notification_email {}
