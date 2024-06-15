@@ -9,6 +9,19 @@ resource "google_container_cluster" "primary" {
   network    = var.vpc_network
   subnetwork = var.kube_subnet
 
+  master_auth {
+    # username = ""
+    # password = ""
+    client_certificate_config {
+      issue_client_certificate = false
+    }
+  }
+  
+  # ip_allocation_policy {
+  #   cluster_secondary_range_name  = "range-pods"
+  #   services_secondary_range_name = "range-services"
+  # }
+  
   master_authorized_networks_config {
     cidr_blocks {
       cidr_block   = "10.1.0.0/16"
@@ -65,8 +78,8 @@ resource "google_container_node_pool" "primary_nodes" {
   location   = var.region
   
   autoscaling {
-    min_node_count = 2
-    max_node_count = 3
+    min_node_count = 1
+    max_node_count = 1
   }
 
   management {
@@ -81,7 +94,7 @@ resource "google_container_node_pool" "primary_nodes" {
     ]
   }
   node_config {
-    machine_type = "e2-small"
+    machine_type = "e2-micro"
 
     service_account = var.gke_service_account.email
 
@@ -100,7 +113,7 @@ resource "google_container_node_pool" "primary_nodes" {
       "https://www.googleapis.com/auth/trace.append",
     ]
   }
-  initial_node_count = 2
+  initial_node_count = 1
 }
 
 resource "google_project_service" "active-backup" {

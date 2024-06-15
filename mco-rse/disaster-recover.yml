@@ -1,0 +1,55 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: disaster-recovery-backup
+spec:
+  schedule: "0 2 * * *"  # Exécuter tous les jours à 2h du matin
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: backup
+            image: your-backup-image
+            args:
+            - /backup.sh
+            env:
+            - name: BACKUP_BUCKET
+              value: "gs://your-backup-bucket"
+            - name: DB_HOST
+              value: "your-database-host"
+            - name: DB_USER
+              value: "your-database-user"
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: password
+          restartPolicy: OnFailure
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: disaster-recovery-restore
+spec:
+  template:
+    spec:
+      containers:
+      - name: restore
+        image: your-restore-image
+        args:
+        - /restore.sh
+        env:
+        - name: BACKUP_BUCKET
+          value: "gs://your-backup-bucket"
+        - name: DB_HOST
+          value: "your-database-host"
+        - name: DB_USER
+          value: "your-database-user"
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
+      restartPolicy: Never

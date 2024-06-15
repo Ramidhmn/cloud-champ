@@ -31,8 +31,8 @@ kubeconfig
 *secrets.yaml
 
 # YAML files for Kubernetes configurations (if you want to exclude certain sensitive files)
-*.yml
-*.yaml
+# *.yml
+# *.yaml
 
 # Sensitive files (SSH keys, environment variables)
 *.pem
