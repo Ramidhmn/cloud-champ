@@ -1,0 +1,268 @@
+[0m[1mmodule.app-sa.google_project_iam_binding.project-viewer: Refreshing state... [id=cloudchamp/roles/viewer][0m
+[0m[1mmodule.kube-apps.google_project_service.active-backup: Refreshing state... [id=cloudchamp/gkebackup.googleapis.com][0m
+[0m[1mmodule.app-sa.google_service_account.jenkins_service_account: Refreshing state... [id=projects/cloudchamp/serviceAccounts/jenkins-sa@cloudchamp.iam.gserviceaccount.com][0m
+[0m[1mmodule.app-sa.google_service_account.gke_service_account: Refreshing state... [id=projects/cloudchamp/serviceAccounts/gke-sa@cloudchamp.iam.gserviceaccount.com][0m
+[0m[1mmodule.networks.google_compute_network.my_cloud_ntwrk: Refreshing state... [id=projects/cloudchamp/global/networks/my-vpc][0m
+[0m[1mmodule.networks.google_monitoring_notification_channel.email: Refreshing state... [id=projects/cloudchamp/notificationChannels/431204859070490272][0m
+[0m[1mmodule.networks.google_storage_bucket.audit_logs_bucket: Refreshing state... [id=cloudchamp-audit-logs][0m
+[0m[1mmodule.networks.google_logging_project_sink.audit_logs: Refreshing state... [id=projects/cloudchamp/sinks/audit-logs-sink][0m
+[0m[1mmodule.networks.google_compute_subnetwork.integ_utils: Refreshing state... [id=projects/cloudchamp/regions/europe-west1/subnetworks/subnet-cicd][0m
+[0m[1mmodule.networks.google_compute_router.nat_router: Refreshing state... [id=projects/cloudchamp/regions/europe-west1/routers/nat-router][0m
+[0m[1mmodule.networks.google_compute_firewall.deny_all_ext: Refreshing state... [id=projects/cloudchamp/global/firewalls/deny-all][0m
+[0m[1mmodule.networks.google_compute_subnetwork.kube_apps: Refreshing state... [id=projects/cloudchamp/regions/europe-west1/subnetworks/subnet-k8s][0m
+[0m[1mmodule.networks.google_compute_router_nat.nat_config: Refreshing state... [id=cloudchamp/europe-west1/nat-router/nat-config][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.kube-apps.google_container_cluster.primary[0m will be created
+[0m  [32m+[0m[0m resource "google_container_cluster" "primary" {
+      [32m+[0m[0m cluster_ipv4_cidr                        = (known after apply)
+      [32m+[0m[0m datapath_provider                        = (known after apply)
+      [32m+[0m[0m default_max_pods_per_node                = (known after apply)
+      [32m+[0m[0m deletion_protection                      = true
+      [32m+[0m[0m enable_cilium_clusterwide_network_policy = false
+      [32m+[0m[0m enable_intranode_visibility              = (known after apply)
+      [32m+[0m[0m enable_kubernetes_alpha                  = false
+      [32m+[0m[0m enable_l4_ilb_subsetting                 = false
+      [32m+[0m[0m enable_legacy_abac                       = false
+      [32m+[0m[0m enable_shielded_nodes                    = true
+      [32m+[0m[0m endpoint                                 = (known after apply)
+      [32m+[0m[0m id                                       = (known after apply)
+      [32m+[0m[0m initial_node_count                       = 1
+      [32m+[0m[0m label_fingerprint                        = (known after apply)
+      [32m+[0m[0m location                                 = "europe-west1"
+      [32m+[0m[0m logging_service                          = (known after apply)
+      [32m+[0m[0m master_version                           = (known after apply)
+      [32m+[0m[0m monitoring_service                       = (known after apply)
+      [32m+[0m[0m name                                     = "gke-cluster"
+      [32m+[0m[0m network                                  = "my-vpc"
+      [32m+[0m[0m networking_mode                          = (known after apply)
+      [32m+[0m[0m node_locations                           = (known after apply)
+      [32m+[0m[0m node_version                             = (known after apply)
+      [32m+[0m[0m operation                                = (known after apply)
+      [32m+[0m[0m private_ipv6_google_access               = (known after apply)
+      [32m+[0m[0m project                                  = (known after apply)
+      [32m+[0m[0m remove_default_node_pool                 = true
+      [32m+[0m[0m self_link                                = (known after apply)
+      [32m+[0m[0m services_ipv4_cidr                       = (known after apply)
+      [32m+[0m[0m subnetwork                               = "subnet-k8s"
+      [32m+[0m[0m tpu_ipv4_cidr_block                      = (known after apply)
+
+      [32m+[0m[0m master_authorized_networks_config {
+          [32m+[0m[0m gcp_public_cidrs_access_enabled = (known after apply)
+
+          [32m+[0m[0m cidr_blocks {
+              [32m+[0m[0m cidr_block   = "10.0.0.0/8"
+              [32m+[0m[0m display_name = "internal"
+            }
+        }
+
+      [32m+[0m[0m node_config {
+          [32m+[0m[0m disk_size_gb      = 50
+          [32m+[0m[0m disk_type         = "pd-standard"
+          [32m+[0m[0m effective_taints  = (known after apply)
+          [32m+[0m[0m guest_accelerator = (known after apply)
+          [32m+[0m[0m image_type        = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m local_ssd_count   = (known after apply)
+          [32m+[0m[0m logging_variant   = (known after apply)
+          [32m+[0m[0m machine_type      = "e2-medium"
+          [32m+[0m[0m metadata          = (known after apply)
+          [32m+[0m[0m min_cpu_platform  = (known after apply)
+          [32m+[0m[0m oauth_scopes      = (known after apply)
+          [32m+[0m[0m preemptible       = false
+          [32m+[0m[0m service_account   = (known after apply)
+          [32m+[0m[0m spot              = false
+        }
+
+      [32m+[0m[0m private_cluster_config {
+          [32m+[0m[0m enable_private_endpoint = true
+          [32m+[0m[0m enable_private_nodes    = true
+          [32m+[0m[0m master_ipv4_cidr_block  = "172.16.0.0/28"
+          [32m+[0m[0m peering_name            = (known after apply)
+          [32m+[0m[0m private_endpoint        = (known after apply)
+          [32m+[0m[0m public_endpoint         = (known after apply)
+        }
+    }
+
+[1m  # module.kube-apps.google_container_node_pool.primary_nodes[0m will be created
+[0m  [32m+[0m[0m resource "google_container_node_pool" "primary_nodes" {
+      [32m+[0m[0m cluster                     = "gke-cluster"
+      [32m+[0m[0m id                          = (known after apply)
+      [32m+[0m[0m initial_node_count          = 3
+      [32m+[0m[0m instance_group_urls         = (known after apply)
+      [32m+[0m[0m location                    = "europe-west1"
+      [32m+[0m[0m managed_instance_group_urls = (known after apply)
+      [32m+[0m[0m max_pods_per_node           = (known after apply)
+      [32m+[0m[0m name                        = "primary-nodes"
+      [32m+[0m[0m name_prefix                 = (known after apply)
+      [32m+[0m[0m node_count                  = (known after apply)
+      [32m+[0m[0m node_locations              = (known after apply)
+      [32m+[0m[0m operation                   = (known after apply)
+      [32m+[0m[0m project                     = "cloudchamp"
+      [32m+[0m[0m version                     = (known after apply)
+
+      [32m+[0m[0m node_config {
+          [32m+[0m[0m disk_size_gb      = 50
+          [32m+[0m[0m disk_type         = "pd-standard"
+          [32m+[0m[0m effective_taints  = (known after apply)
+          [32m+[0m[0m guest_accelerator = (known after apply)
+          [32m+[0m[0m image_type        = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m local_ssd_count   = (known after apply)
+          [32m+[0m[0m logging_variant   = (known after apply)
+          [32m+[0m[0m machine_type      = "e2-medium"
+          [32m+[0m[0m metadata          = (known after apply)
+          [32m+[0m[0m min_cpu_platform  = (known after apply)
+          [32m+[0m[0m oauth_scopes      = [
+              [32m+[0m[0m "https://www.googleapis.com/auth/cloud-platform",
+            ]
+          [32m+[0m[0m preemptible       = false
+          [32m+[0m[0m service_account   = "gke-sa@cloudchamp.iam.gserviceaccount.com"
+          [32m+[0m[0m spot              = false
+        }
+    }
+
+[1m  # module.networks.google_compute_firewall.default-allow-internal[0m will be created
+[0m  [32m+[0m[0m resource "google_compute_firewall" "default-allow-internal" {
+      [32m+[0m[0m creation_timestamp = (known after apply)
+      [32m+[0m[0m destination_ranges = (known after apply)
+      [32m+[0m[0m direction          = (known after apply)
+      [32m+[0m[0m enable_logging     = (known after apply)
+      [32m+[0m[0m id                 = (known after apply)
+      [32m+[0m[0m name               = "default-allow-internal"
+      [32m+[0m[0m network            = "my-vpc"
+      [32m+[0m[0m priority           = 1000
+      [32m+[0m[0m project            = "cloudchamp"
+      [32m+[0m[0m self_link          = (known after apply)
+      [32m+[0m[0m source_ranges      = [
+          [32m+[0m[0m "10.0.0.0/16",
+        ]
+
+      [32m+[0m[0m allow {
+          [32m+[0m[0m ports    = [
+              [32m+[0m[0m "0-65535",
+            ]
+          [32m+[0m[0m protocol = "tcp"
+        }
+      [32m+[0m[0m allow {
+          [32m+[0m[0m ports    = [
+              [32m+[0m[0m "0-65535",
+            ]
+          [32m+[0m[0m protocol = "udp"
+        }
+      [32m+[0m[0m allow {
+          [32m+[0m[0m ports    = []
+          [32m+[0m[0m protocol = "icmp"
+        }
+    }
+
+[1m  # module.networks.google_compute_firewall.deny_all_ext[0m will be created
+[0m  [32m+[0m[0m resource "google_compute_firewall" "deny_all_ext" {
+      [32m+[0m[0m creation_timestamp = (known after apply)
+      [32m+[0m[0m destination_ranges = (known after apply)
+      [32m+[0m[0m direction          = "INGRESS"
+      [32m+[0m[0m enable_logging     = (known after apply)
+      [32m+[0m[0m id                 = (known after apply)
+      [32m+[0m[0m name               = "deny-all"
+      [32m+[0m[0m network            = "my-vpc"
+      [32m+[0m[0m priority           = 1000
+      [32m+[0m[0m project            = "cloudchamp"
+      [32m+[0m[0m self_link          = (known after apply)
+      [32m+[0m[0m source_ranges      = [
+          [32m+[0m[0m "0.0.0.0/0",
+        ]
+
+      [32m+[0m[0m deny {
+          [32m+[0m[0m ports    = [
+              [32m+[0m[0m "0-65535",
+            ]
+          [32m+[0m[0m protocol = "tcp"
+        }
+      [32m+[0m[0m deny {
+          [32m+[0m[0m ports    = [
+              [32m+[0m[0m "0-65535",
+            ]
+          [32m+[0m[0m protocol = "udp"
+        }
+      [32m+[0m[0m deny {
+          [32m+[0m[0m ports    = []
+          [32m+[0m[0m protocol = "icmp"
+        }
+    }
+
+[1mPlan:[0m 4 to add, 0 to change, 0 to destroy.
+[0m[0m[1mmodule.networks.google_compute_firewall.deny_all_ext: Creating...[0m[0m
+[0m[1mmodule.networks.google_compute_firewall.default-allow-internal: Creating...[0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Creating...[0m[0m
+[0m[1mmodule.networks.google_compute_firewall.deny_all_ext: Still creating... [10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [10s elapsed][0m[0m
+[0m[1mmodule.networks.google_compute_firewall.deny_all_ext: Creation complete after 12s [id=projects/cloudchamp/global/firewalls/deny-all][0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [1m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [1m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [1m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [1m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [1m40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [1m50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [2m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [2m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [2m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [2m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [2m40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [2m50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [3m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [3m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [3m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [3m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [3m40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [3m50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [4m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [4m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [4m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [4m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [4m40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [4m50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [5m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [5m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [5m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [5m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [5m40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [5m50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [6m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [6m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [6m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [6m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [6m40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [6m50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [7m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [7m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [7m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [7m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [7m40s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [7m50s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [8m0s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [8m10s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [8m20s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [8m30s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [8m41s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [8m51s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [9m1s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [9m11s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [9m21s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [9m31s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [9m41s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [9m51s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [10m1s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [10m11s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [10m21s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Still creating... [10m31s elapsed][0m[0m
+[0m[1mmodule.kube-apps.google_container_cluster.primary: Creation complete after 10m38s [id=projects/cloudchamp/locations/europe-west1/clusters/gke-cluster][0m
+[0m[1mmodule.kube-apps.google_container_node_pool.primary_nodes: Creating...[0m[0m
