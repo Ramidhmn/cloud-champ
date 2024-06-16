@@ -1,3 +1,9 @@
+resource "google_project_service" "enable_asm" {
+  project = var.project_id
+  service = "mesh.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_container_cluster" "primary" {
   name     = "gke-cluster"
   location = var.region
@@ -71,6 +77,7 @@ resource "google_container_cluster" "primary" {
   # Activer l'authentification RBAC
   enable_legacy_abac = false
 }
+
 
 resource "google_container_node_pool" "primary_nodes" {
   name       = "primary-nodes"
